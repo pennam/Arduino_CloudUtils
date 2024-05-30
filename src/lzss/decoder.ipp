@@ -46,7 +46,7 @@ GenericDecoder<EI, EJ, N, F>::GenericDecoder(std::function<void(const uint8_t)> 
 }
 
 template<int EI, int EJ, int N, int F>
-status GenericDecoder<EI, EJ, N, F>::handle_state() {
+typename GenericDecoder<EI, EJ, N, F>::status GenericDecoder<EI, EJ, N, F>::handle_state() {
     status res = IN_PROGRESS;
 
     int c = getbit(bits_required(this->state));
@@ -102,7 +102,7 @@ status GenericDecoder<EI, EJ, N, F>::handle_state() {
 }
 
 template<int EI, int EJ, int N, int F>
-status GenericDecoder<EI, EJ, N, F>::decompress(uint8_t* const buffer, uint32_t size) {
+typename GenericDecoder<EI, EJ, N, F>::status GenericDecoder<EI, EJ, N, F>::decompress(uint8_t* const buffer, uint32_t size) {
     if(!get_char_cbk) {
         this->in_buffer = buffer;
         this->available += size;

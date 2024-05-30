@@ -15,12 +15,6 @@
 
 namespace arduino { namespace lzss {
 
-    enum status: uint8_t {
-        DONE,
-        IN_PROGRESS,
-        NOT_COMPLETED
-    };
-
     constexpr int DefaultEI = 11;                       /* typically 10..13 */
     constexpr int DefaultEJ =  4;                       /* typically 4..5 */
     constexpr int DefaultN = (1 << DefaultEI);          /* buffer size */
@@ -46,16 +40,16 @@ namespace arduino { namespace lzss {
         GenericDecoder(std::function<int()> getc_cbk, std::function<void(const uint8_t)> putc_cbk);
 
         /**
-        * this enum describes the result of the computation of a single FSM computation
-        * DONE: the decompression is completed
-        * IN_PROGRESS: the decompression cycle completed successfully, ready to compute next
-        * NOT_COMPLETED: the current cycle didn't complete because the available data is not enough
-        */
-        // enum status: uint8_t {
-        //     DONE,
-        //     IN_PROGRESS,
-        //     NOT_COMPLETED
-        // };
+         * this enum describes the result of the computation of a single FSM computation for LZSS decoder
+         * DONE: the decompression is completed
+         * IN_PROGRESS: the decompression cycle completed successfully, ready to compute next
+         * NOT_COMPLETED: the current cycle didn't complete because the available data is not enough
+         */
+        enum status: uint8_t {
+            DONE,
+            IN_PROGRESS,
+            NOT_COMPLETED
+        };
 
         /**
         * decode the provided buffer until buffer ends, then pause the process
