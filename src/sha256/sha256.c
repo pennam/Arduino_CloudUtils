@@ -5,13 +5,8 @@
  * Copyright (C) 2001-2003  Christophe Devine
  */
 
-#ifndef USE_HOSTCC
-#include <u-boot/schedule.h>
-#endif /* USE_HOSTCC */
 #include <string.h>
-#include <u-boot/sha256.h>
-
-#include <linux/compiler_attributes.h>
+#include "sha256.h"
 
 const uint8_t sha256_der_prefix[SHA256_DER_LEN] = {
 	0x30, 0x31, 0x30, 0x0d, 0x06, 0x09, 0x60, 0x86,
@@ -185,7 +180,7 @@ static void sha256_process_one(sha256_context *ctx, const uint8_t data[64])
 	ctx->state[7] += H;
 }
 
-__weak void sha256_process(sha256_context *ctx, const unsigned char *data,
+void sha256_process(sha256_context *ctx, const unsigned char *data,
 			   unsigned int blocks)
 {
 	if (!blocks)

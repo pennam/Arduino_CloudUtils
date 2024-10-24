@@ -1,7 +1,8 @@
 #ifndef _SHA256_H
 #define _SHA256_H
 
-#include <linux/types.h>
+#include <stdint.h>
+#include <stddef.h>
 
 #if defined(CONFIG_MBEDTLS_LIB_CRYPTO)
 /*
