@@ -23,6 +23,10 @@ void setup() {
     sha256.finalize(sha);
 
     Serial.println(hexEncode(sha, sizeof(sha)));
+
+    /* One-shot */
+    arduino::sha256::oneshot(buffer, sizeof(buffer), sha, sizeof(buffer));
+    Serial.println(hexEncode(sha, sizeof(sha)));
 }
 
 static String hexEncode(uint8_t* in, uint32_t size) {

@@ -37,8 +37,18 @@ private:
 
 namespace arduino { namespace sha256 {
 
-    inline void begin(sha256_context * ctx) { return sha256_starts(ctx); }
-    inline void update(sha256_context *ctx, const uint8_t *input, uint32_t length) {return sha256_update(ctx, input, length); }
-    inline void finalize(sha256_context * ctx, uint8_t digest[SHA256_SUM_LEN]) { return sha256_finish(ctx, digest); }
+    inline void begin(sha256_context * ctx) {
+        return sha256_starts(ctx);
+    }
+    inline void update(sha256_context *ctx, const uint8_t *input, uint32_t length) {
+        return sha256_update(ctx, input, length);
+    }
+    inline void finalize(sha256_context * ctx, uint8_t digest[SHA256_SUM_LEN]) {
+        return sha256_finish(ctx, digest);
+    }
+    inline void oneshot(const unsigned char *input, unsigned int ilen,
+		unsigned char *output, unsigned int chunk_sz) {
+        return sha256_csum_wd(input, ilen, output, chunk_sz);
+    }
 
 }} // arduino::sha256
