@@ -24,7 +24,7 @@ namespace arduino { namespace csn {
       defined(ARDUINO_PORTENTA_H7_M7)      || \
       defined(ARDUINO_OPTA)                || \
       defined(ARDUINO_GIGA)
-    constexpr int CRYPTO_SN_SIZE  = 12;
+    constexpr int CRYPTO_SN_SIZE  = 9;
 #elif defined(ARDUINO_PORTENTA_C33)        || \
       defined(ARDUINO_NICLA_VISION)
     constexpr int CRYPTO_SN_SIZE  = SE05X_SN_LENGTH;
